@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  python-summarization-flask
+  namespace: default
+  labels:
+    app:  python-summarization-flask
+spec:
+  selector:
+    matchLabels:
+      app: python-summarization-flask
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  python-summarization-flask
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  python-summarization-flask
+      # Changed the image name
+        image:  varma1909/flask_summarization_app:latest
+        ports:
+        - containerPort: 8000
