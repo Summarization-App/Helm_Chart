@@ -30,13 +30,9 @@ jobs:
         run: echo Hello, world!
 
       - uses: azure/setup-helm@v4.2.0
-        with:
-          version: 'latest' # default is latest (stable)
         id: install-helm
 
       - uses: azure/setup-kubectl@v3
-        with:
-           version: '<version>' # default is latest stable
         id: install-kubectl  
 
       - id: install-aws-cli
@@ -49,8 +45,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET }}
           aws-region: us-east-1
         
       # Runs a set of commands using the runners shell
